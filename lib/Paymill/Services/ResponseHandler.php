@@ -207,10 +207,14 @@ class ResponseHandler
      * Creates and fills a client model
      *
      * @param array $response
-     * @return Client
+     * @return Client|null
      */
     private function _createClient(array $response)
     {
+        if (!isset($response['id'])) {
+            return null;
+        }
+        
         $model = new Client();
         $model->setId($response['id']);
         $model->setEmail($response['email']);
@@ -227,10 +231,14 @@ class ResponseHandler
      * Creates and fills a payment model
      *
      * @param array $response
-     * @return Payment
+     * @return Payment|null
      */
     private function _createPayment(array $response)
     {
+        if (!isset($response['id'])) {
+            return null;
+        }
+        
         $model = new Payment();
         $model->setId($response['id']);
         $model->setType($response['type']);
